@@ -1,0 +1,56 @@
+﻿@model Entities.Concrete.Person
+
+@{
+    ViewData["Title"] = "AddPerson";
+}
+
+<h1>AddPerson</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPerson">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PersonName" class="control-label"></label>
+                <input asp-for="PersonName" class="form-control" />
+                <span asp-validation-for="PersonName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersonSurname" class="control-label"></label>
+                <input asp-for="PersonSurname" class="form-control" />
+                <span asp-validation-for="PersonSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input onclick="return ekle()" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script>
+    function ekle() {
+
+        PersonName = $('#PersonName').val();
+        PersonSurname = $('#PersonSurname').val();
+
+
+        if (PersonName != "" && PersonSurname !="") {
+        return true;
+    }
+    else if (PersonName == "") {
+        alert("Person Name can not be empty!");
+        return false;
+    }
+    else if (PersonSurname == "") {
+        alert("Person Surname can not be empty!");
+        return false;
+    }
+ 
+    }
+</script>
